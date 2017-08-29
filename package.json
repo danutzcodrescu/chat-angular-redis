@@ -1,0 +1,26 @@
+{
+  "name": "books",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+	"start": "nodemon ./bin/www",
+	"json-server": "json-server --watch ./db/db.json --port 3004"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.8.1",
+    "redis": "^2.8.0",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
+    "serve-favicon": "~2.4.2",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "nodemon": "^1.11.0"
+  }
+}

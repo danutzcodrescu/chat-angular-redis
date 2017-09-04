@@ -1,0 +1,20 @@
+<form autocomplete="off" novalidate [formGroup]="form">
+	
+		<fieldset>
+			<legend>Login</legend>
+			<div>
+				<label for="text">Username</label>
+				<input type="text" name="text" formControlName="username">
+			</div>
+			<div>
+				<label for="password">Password</label>
+				<input type="password" name="password" formControlName="password">
+			</div>
+		</fieldset>
+		<div>
+			<div></div>
+			<button (click)="login()">Login</button>
+		</div>	
+</form>
+
+<p>No account??? <a (click)="page.emit('register')">Click to here to register</a></p>

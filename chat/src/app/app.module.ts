@@ -11,13 +11,17 @@ import { UsersService } from "./services/users.service";
 import { StoreModule } from '@ngrx/store';
 import rootReducer from './reducers/rootReducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { RouterModule } from '@angular/router';
+import appRoutes from './routes.config';
 
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
-		RegisterComponent
+		RegisterComponent,
+		DashboardComponent
 	],
 	imports: [
 		BrowserModule,
@@ -27,7 +31,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 		StoreModule.forRoot(rootReducer),
 		StoreDevtoolsModule.instrument({
 			maxAge: 25 //  Retains last 25 states
-		})
+		}),
+		RouterModule.forRoot(appRoutes, {enableTracing: process.env["NODE_ENV"] === "production" ? true : false})
 	],
 	providers: [UsersService],
 	bootstrap: [AppComponent]

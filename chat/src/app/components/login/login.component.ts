@@ -1,6 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { UsersService } from "../../services/users.service";
+import { Store } from '@ngrx/store';
+import ApplicationState from '../../store/applicationState';
+import { LoginAction } from '../../actions/userActions';
+
 
 @Component({
 	selector: 'login',
@@ -13,7 +17,8 @@ export class LoginComponent implements OnInit {
 
 	public form: FormGroup;
 
-	constructor(private fb: FormBuilder, private userService: UsersService) {
+	constructor(private fb: FormBuilder, private userService: UsersService, private store: Store<ApplicationState>) {
+	
 		this.form = this.fb.group({
 			username: ['', Validators.required],
 			password: ['', Validators.required]
@@ -21,19 +26,19 @@ export class LoginComponent implements OnInit {
 	}
 
 	ngOnInit() {
+
 	}
 
 	login() {
 		const formValue = this.form.value;
-		this.userService.loginUser({username: formValue.username, password:formValue.password})
-			.subscribe((resp)=> {
+		this.userService.loginUser({username: formValue.username, password: formValue.password})
+			.subscribe((resp) => {
 				console.log(resp);
-				if (resp.length>0) {
-					this.form.reset();
-				}		
+				this.store.dispatch( new LoginAction(resp));
+				this.form.reset();
 			},
-			err=>console.log(err)
-		)
+			err => console.log(err)
+		);
 	}
 
 }

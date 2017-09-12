@@ -1,4 +1,4 @@
-const server = "http://localhost:3004"
+const server = "http://localhost:3000"
 const constants = {
 	users: server + "/users"
 }

@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-	"start": "nodemon ./bin/www",
-	"json-server": "json-server --watch ./db/db.json --port 3004"
+    "start": "nodemon ./bin/www",
+    "json-server": "json-server --watch ./db/db.json --port 3004"
   },
   "dependencies": {
     "body-parser": "~1.17.1",

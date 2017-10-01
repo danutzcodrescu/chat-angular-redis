@@ -13,15 +13,18 @@ import rootReducer from './reducers/rootReducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
-import appRoutes from './routes.config';
-
+import { appRoutes } from './routes.config';
+import { AuthComponent } from './components/auth/auth.component';
+import { AuthGuard } from './shared/authGuard/auth-guard.guard';
+import 'rxjs/Rx';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
 		RegisterComponent,
-		DashboardComponent
+		DashboardComponent,
+		AuthComponent
 	],
 	imports: [
 		BrowserModule,
@@ -32,9 +35,9 @@ import appRoutes from './routes.config';
 		StoreDevtoolsModule.instrument({
 			maxAge: 25 //  Retains last 25 states
 		}),
-		RouterModule.forRoot(appRoutes, {enableTracing: process.env["NODE_ENV"] === "production" ? true : false})
+		RouterModule.forRoot(appRoutes)
 	],
-	providers: [UsersService],
+	providers: [UsersService, AuthGuard],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,12 +1,13 @@
 import { Action } from '@ngrx/store';
 import { UserModel } from '../models/UserModel';
 
-export class UserAction implements Action {
-	readonly type: string;
-	constructor(public payload?: any) { }
-}
+export const LOGIN  = '[User] Action';
 
-export class LoginAction implements UserAction {
-	readonly type: string = "LOGIN";
+
+export class LoginAction implements Action {
+	readonly type: string = LOGIN;
 	constructor (public payload: UserModel) {}
 }
+
+export type All
+= LoginAction;

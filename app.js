@@ -7,11 +7,9 @@ var bodyParser = require('body-parser');
 
 const booksRoute = require('./routes/booksRoute');
 const usersRoute = require('./routes/usersRoute');
-const chatRoute = require('./routes/chatRoute');
+// const chatRoute = require('./routes/chatRoute');
 
 require('dotenv').config({path: './variables.env'});
-
-const client = require('./connection/chatRedis');
 
 var app = express();
 
@@ -37,7 +35,7 @@ app.use(function(req, res, next) {
 
 app.use('/books', booksRoute);
 app.use('/users', usersRoute);
-app.use('/chat', chatRoute);
+// app.use('/chat', chatRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

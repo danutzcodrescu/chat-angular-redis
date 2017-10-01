@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import ApplicationState from '../../store/applicationState';
 
 @Component({
-  selector: 'dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+	selector: 'dashboard',
+	templateUrl: './dashboard.component.html',
+	styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+	constructor(private store: Store<ApplicationState>) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+		// this.store.select()
+	}
 
 }

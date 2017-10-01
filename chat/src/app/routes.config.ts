@@ -1,17 +1,17 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { AuthGuard } from './shared/authGuard/auth-guard.guard';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
 	{
 		path: '',
-		component: AppComponent
+		component: AuthComponent
 	},
 	{
 		path: 'dashboard',
-		component: DashboardComponent
+		component: DashboardComponent,
+		canActivate: [AuthGuard]
 	},
-	{ path: '**', component: AppComponent }
+	{ path: '**', component: AuthComponent }
 ];
-
-export default appRoutes;

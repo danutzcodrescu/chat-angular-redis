@@ -4,6 +4,7 @@ import { UsersService } from "../../services/users.service";
 import { Store } from '@ngrx/store';
 import ApplicationState from '../../store/applicationState';
 import { LoginAction } from '../../actions/userActions';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
 
 	public form: FormGroup;
 
-	constructor(private fb: FormBuilder, private userService: UsersService, private store: Store<ApplicationState>) {
+	constructor(private fb: FormBuilder, private userService: UsersService, private store: Store<ApplicationState>, private router: Router) {
 	
 		this.form = this.fb.group({
 			username: ['', Validators.required],
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
 			.subscribe((resp) => {
 				console.log(resp);
 				this.store.dispatch( new LoginAction(resp));
-				this.form.reset();
+				this.router.navigate(['dashboard']);
 			},
 			err => console.log(err)
 		);

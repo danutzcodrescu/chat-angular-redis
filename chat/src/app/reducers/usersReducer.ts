@@ -1,18 +1,33 @@
 import { UserModel } from '../models/UserModel';
-import { UserAction } from '../actions//userActions';
+import * as UserActions from '../actions//userActions';
 
-const userReducer = (state: UserModel = {username: null}, action: UserAction) => {
+export type Action = UserActions.All;
+
+export interface State {
+	username: string | null;
+}
+
+export const initialState: State = {
+	username: null
+};
+
+export const userReducer = (state: UserModel = initialState, action: Action): State => {
 	switch (action.type) {
-		case "LOGIN":
+		case UserActions.LOGIN:
 			let newState = {...state};
 			return newState = action.payload;
 
-		case "LOGOUT":
-			return state = action.payload;
+		// case "LOGOUT":
+		// 	return state = action.payload;
 
 		default:
 			return state;
 	}
 };
 
-export default userReducer;
+export const getUsername = (state: State) => {
+	console.log(state);
+	return state;
+}
+
+

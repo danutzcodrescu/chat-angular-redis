@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import ApplicationState from '../../store/applicationState';
 import { UsersService } from '../../services/users.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import socket from '../../../shared/socket';
 
 @Component({
 	selector: 'dashboard',
@@ -27,8 +28,9 @@ export class DashboardComponent implements OnInit {
 	}
 
 	sendMessage() {
-		const formValue = this.form.value;
-		console.log(formValue);
+		const message = this.form.value.message;
+		console.log(message);
+		socket.emit('message', { user: 'test', message });
 	}
 
 }

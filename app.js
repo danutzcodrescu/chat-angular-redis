@@ -7,19 +7,18 @@ var bodyParser = require('body-parser');
 
 const booksRoute = require('./routes/booksRoute');
 const usersRoute = require('./routes/usersRoute');
+const socketIo = require('./connection/socket.io');
 // const chatRoute = require('./routes/chatRoute');
 
 require('dotenv').config({path: './variables.env'});
 
 var app = express();
 
-const io = require('socket.io')(require('./bin/www').server);
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
-io.on('connection', function (socket) {
-	socket.on('message', function (data) {
-	  console.log(data);
-	});
-});
+// app.io = require('socket.io')();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,10 +36,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // CORS
 app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept-Type');
+    // res.header('Access-Control-Allow-Credentials', 'true');
+    next();
 });
+
+//start listen with socket.io
+io.on('connection', socketIo);
+
 
 app.use('/books', booksRoute);
 app.use('/users', usersRoute);
@@ -66,4 +70,4 @@ app.use(function(err, req, res, next) {
 
 
 
-module.exports = app;
+module.exports ={app, server};;

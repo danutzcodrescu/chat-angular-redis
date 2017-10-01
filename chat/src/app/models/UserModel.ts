@@ -1,3 +1,5 @@
 export interface UserModel {
-	username: string;
+	username: string | null;
+	friends: [string];
+	conversations: [any];
 }

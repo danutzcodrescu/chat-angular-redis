@@ -11,17 +11,28 @@ router.post('/register', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-	redis.hmget(`user:${req.body.username}`, 'username', 'password', (err, resp)=>{
+	redis.multi()
+	.smembers(`user:${req.body.username}:friends`)
+	.hmget(`user:${req.body.username}`, 'username', 'password')
+	.smembers(`user:${req.body.username}:conversations`)
+    .exec(function (err, replies) {
 		if (err) next(err);
-		if (!resp) res.status(404).end();
-		const user = new User(...resp);
+		if (replies[1][0]===null) res.status(404).end();
+		const user = new User(...replies[1], replies[0]);
 		if (user.getPassword()==req.body.password) {
-			res.json(user.api());
+			const multi = redis.multi();
+			replies[2].forEach(id => {
+				multi.hgetall(`conversation:${id}`);
+			});
+			multi.exec(function (err, conversations) {
+				user.conversations = conversations;
+				res.json(user.api()); // 101, 2
+			});
+			
 		} else {
 			res.status(404).end();
 		}
-		
-	});
+    });
 
 });
 

@@ -1,7 +1,9 @@
 class User {
-	constructor(username, password) {
+	constructor(username, password, friends) {
 		this.username = username;
 		this.password = password;
+		this.friends = friends;
+		this.conversations = null;
 	}
 
 	getPassword() {
@@ -10,7 +12,9 @@ class User {
 
 	api() {
 		return {
-			username: this.username
+			username: this.username,
+			friends: this.friends,
+			conversations: this.conversations
 		}
 	}
 }

@@ -5,10 +5,14 @@ export type Action = UserActions.All;
 
 export interface State {
 	username: string | null;
+	friends: [string];
+	conversations: [any];
 }
 
 export const initialState: State = {
-	username: "boss"
+	username: null,
+	friends: new Array(''),
+	conversations: new Array
 };
 
 export const userReducer = (state: UserModel = initialState, action: Action): State => {

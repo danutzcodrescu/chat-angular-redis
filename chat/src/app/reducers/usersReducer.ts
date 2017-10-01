@@ -8,7 +8,7 @@ export interface State {
 }
 
 export const initialState: State = {
-	username: null
+	username: "boss"
 };
 
 export const userReducer = (state: UserModel = initialState, action: Action): State => {

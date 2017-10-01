@@ -1,3 +1,32 @@
-<p>
-  dashboard works!
-</p>
+<div class="container">
+	<div class="channels">
+		<p>User 123</p>
+		<i class="fa fa-plus-circle" aria-hidden="true"  (click)="newContact()"></i>
+		<ul>
+			<li><i class="fa fa-circle" aria-hidden="true"></i> Test 1</li>
+			<li><i class="fa fa-circle-thin" aria-hidden="true"></i> Test 2</li>
+			<li><i class="fa fa-circle-thin" aria-hidden="true"></i> Test 3</li>
+			<li><i class="fa fa-circle-thin" aria-hidden="true"></i> Test 4</li>
+			<li><i class="fa fa-circle-thin" aria-hidden="true"></i> Test 5</li>
+			<li><i class="fa fa-circle" aria-hidden="true"></i> Test 6</li>
+			<li><i class="fa fa-circle" aria-hidden="true"></i> Test 7</li>
+		</ul>
+	</div>
+	<div class="chat">
+		<ul>
+			<li><span>User123</span>: message</li>
+			<li><span>User187</span>: message</li>
+			<li><span>User123</span>: message</li>
+			<li><span>User187</span>: message</li>
+			<li><span>User123</span>: message</li>
+		</ul>
+		<form autocomplete="off" novalidate [formGroup]="form">	
+				<input type="text" name="text" formControlName="message">
+						
+				<button (click)="sendMessage()">Send message</button>
+						
+		</form>
+	</div>
+</div>
+
+

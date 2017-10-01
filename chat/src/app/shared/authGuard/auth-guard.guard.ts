@@ -8,13 +8,13 @@ import * as fromAuth from '../../reducers/usersReducer';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-	constructor(private store: Store<fromAuth.State>, private router: Router) {}
+	constructor(private store: Store<ApplicationState>, private router: Router) {}
 	canActivate(
 		next: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-		return this.store.select(fromAuth.getUsername).map(username => {
-			console.log(username);
-			if (username) { 
+		return this.store.select('user').map(user => {
+			console.log(user);
+			if (user.username) { 
 				return true;
 			} else {
 				this.router.navigate(['/']);

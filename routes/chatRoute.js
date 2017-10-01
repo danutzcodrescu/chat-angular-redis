@@ -1,4 +1,3 @@
-const io = require('socket.io')(require('../bin/www').server);
 const express = require('express');
 const router = express.Router();
 const redis = require('../connection/redis');

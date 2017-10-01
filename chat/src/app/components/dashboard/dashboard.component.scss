@@ -1,0 +1,24 @@
+.container {
+	display: flex;
+	.channels {
+		ul {
+			list-style: none;
+		}
+		flex: 1 1 1;
+	}
+}
+
+
+.chat {
+	flex: 3 3 3;
+	ul {
+		list-style: none;
+		li {
+			font-style: italic;
+			span {
+				font-style: normal;
+				font-weight: bold;
+			}
+		}
+	}
+}

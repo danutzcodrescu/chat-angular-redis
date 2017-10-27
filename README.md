@@ -24,7 +24,7 @@ Chat using angular 4, redis and express
     {
       "username": "ben",
       "password": "test",
-      "status": "ofline"
+      "status": "ofline",
       "conversations": "scott, wes"
     }
  ]   

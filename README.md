@@ -10,7 +10,7 @@ Chat using angular 4, redis and express
       "conversations": "scott, wes"
     },
     {
-      "username: "scott",
+      "username": "scott",
       "password": "test",
       "status": "offline",
       "conversations": "boss, wes, ben"

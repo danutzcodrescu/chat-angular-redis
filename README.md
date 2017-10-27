@@ -22,9 +22,10 @@ Chat using angular 4, redis and express
       "conversations": "scott, boss, ben"
     },
     {
-      username: ben,
-      password: test,
-      conversations: scott, wes
+      "username": "ben",
+      "password": "test",
+      "status": "ofline"
+      "conversations": "scott, wes"
     }
  ]   
 ```
